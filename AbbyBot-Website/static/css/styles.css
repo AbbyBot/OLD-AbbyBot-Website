@@ -1,14 +1,17 @@
-.main-content, .subtitle, .title {
+.main-content,
+.subtitle,
+.title {
     color: white !important;
 }
 
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
-    background-color: #b45428; 
+    background-color: #b45428;
 }
 
 .main-content {
@@ -38,3 +41,62 @@ html, body {
 }
 
 
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        /* Make sure it is above the content */
+    }
+
+    /* Make sure the main content is not covered by the fixed navbar */
+    .main-content {
+        margin-top: 70px;
+        /* Adjust the value according to the height of the navbar */
+    }
+
+}
+
+
+/* Shared animations */
+
+
+.hover-grow {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-grow:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+.swing {
+    transform-origin: top center;
+    animation: swing 2s ease;
+}
+
+@keyframes swing {
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

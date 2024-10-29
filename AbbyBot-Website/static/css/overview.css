@@ -1,8 +1,0 @@
-
-    .hover-grow {
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .hover-grow:hover {
-        transform: scale(1.1);
-    }

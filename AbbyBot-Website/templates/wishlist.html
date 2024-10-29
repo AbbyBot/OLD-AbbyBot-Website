@@ -13,13 +13,13 @@
   <div class="container">
     <div class="columns is-vcentered">
 
-      <div class="column is-half">
+      <div class="column is-half" >
         <figure class="image is-1by1">
           <img
             style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); border-radius: 10px; transition: box-shadow 0.3s ease-in-out; margin-bottom: 20px;"
             src="{{ url_for('static', filename='img/art/AbbyBot-body.png') }}" alt="AbbyBot">
         </figure>
-        <p>- AbbyBot's team</p>
+        <p class="mt-4 subtitle">-AbbyBot Project Team</p>
       </div>
 
       <div class="column is-half">
@@ -28,6 +28,15 @@
           Do you want to use AbbyBot? If you are interested, fill out this short form to be notified when AbbyBot is
           released!
         </p>
+
+
+        <div class="mb-3">
+          <p class="subtitle">By adding AbbyBot to your wishlist, you'll receive the privilege of Level 2 - <strong style="color: cyan">Wishlist Contributor</strong>.
+            As a Wishlist Contributor, you'll gain access to special features that regular users won't have. 
+            Stay tuned for more exciting benefits!</p>
+        </div>
+
+
         <form action="{{ url_for('wishlist') }}" method="POST">
           <div class="field">
             <label class="label" style="color: white;"><i class="fa-solid fa-signature"></i> Name (required field)</label>

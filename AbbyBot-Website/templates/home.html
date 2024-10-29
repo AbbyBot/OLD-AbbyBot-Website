@@ -30,20 +30,23 @@
                     </strong>
 
                     <div class="column">
-                        <a href="/wishlist" class="button is-link"><span class="icon"><i class="fab fa-discord"></i></span><span>Add to wishlist</span></a>
-                        
-                        <a href="/overview" class="button is-light"><span class="icon"><i class="fa-solid fa-file-lines"></i></span><span>Overview</span></a>
+                        <a href="/wishlist" class="button is-link"><span class="icon"><i
+                                    class="fab fa-discord"></i></span><span>Add to wishlist</span></a>
+
+                        <a href="/overview" class="button is-light"><span class="icon"><i
+                                    class="fa-solid fa-file-lines"></i></span><span>Overview</span></a>
 
                     </div>
 
                 </div>
                 <div class="column is-half">
-                    
-                    <figure class="image">
+
+                    <figure id="shakeImage" class="image ">
                         <img style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); border-radius: 10px; transition: box-shadow 0.3s ease-in-out; margin-bottom: 20px;"
                             src="{{ url_for('static', filename='img/logo/abbybot_logo.png') }}" alt="AbbyBot">
-                        <p style="color: white;">Abigail "Abby" Monroe, AbbyBot's character icon.</p>
                     </figure>
+
+                    <p class="mt-4 subtitle has-text-white">Abigail "Abby" Monroe, AbbyBot's character icon.</p>
                 </div>
             </div>
 
@@ -69,18 +72,24 @@
                     <p style="color: rgb(249, 0, 41);">We cannot verify the number of servers at this moment. Please try
                         again later.</p>
                     {% endif %}
-                    <p class="subtitle">Would you like to help increase this number? you can do it if you add AbbyBot to the <a style="color: aqua;" href="/wishlist">wishlist</a> 💙</p>
+                    <p class="subtitle">Would you like to help increase this number? you can do it if you add AbbyBot to
+                        the <a style="color: aqua;" href="/wishlist">wishlist</a> 💙</p>
                 </div>
             </div>
 
         </section>
 
-        <div class="buttons is-centered">   
-            <a href="/" class="button is-primary"><span class="icon"><i class="fa-solid fa-house"></i></span><span>Home</span></a>
-            <a href="/about-her" class="button is-link"><span class="icon"><i class="fa-solid fa-circle-info"></i></span><span>About Her</span></a>
-            <a href="/contribute" class="button is-info"><span class="icon"><i class="fa-solid fa-handshake-simple"></i></span><span>Contribute</span></a>
-            <a href="https://github.com/abbybot" class="button is-light"><span class="icon"><i class="fab fa-github"></i></span><span>GitHub Organization</span></a>
-            <a href="/contact-us" class="button is-warning"><span class="icon"><i class="fa-solid fa-address-card"></i></span><span>Contact Us</span></a>
+        <div class="buttons is-centered">
+            <a href="/" class="button is-primary"><span class="icon"><i
+                        class="fa-solid fa-house"></i></span><span>Home</span></a>
+            <a href="/about-her" class="button is-link"><span class="icon"><i
+                        class="fa-solid fa-circle-info"></i></span><span>About Her</span></a>
+            <a href="/contribute" class="button is-info"><span class="icon"><i
+                        class="fa-solid fa-handshake-simple"></i></span><span>Contribute</span></a>
+            <a href="https://github.com/abbybot" class="button is-light"><span class="icon"><i
+                        class="fab fa-github"></i></span><span>GitHub Organization</span></a>
+            <a href="/contact-us" class="button is-warning"><span class="icon"><i
+                        class="fa-solid fa-address-card"></i></span><span>Contact Us</span></a>
 
         </div>
 
@@ -95,26 +104,74 @@
         <div class="has-text-centered">
             <p class="title">
                 {% for category, message in messages %}
-                    {{ category|capitalize }}
+                {{ category|capitalize }}
                 {% endfor %}
             </p>
             <p class="subtitle">
                 {% for category, message in messages %}
-                    {{ message }}
+                {{ message }}
                 {% endfor %}
             </p>
             <button class="button is-primary" id="closeModal">Close</button>
         </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    <button class="modal-close is-large" aria-label="close" id="closeX"></button>
 </div>
 {% endif %}
 {% endwith %}
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select the elements
+        const modal = document.getElementById('thankYouModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const closeXBtn = document.getElementById('closeX');
+
+        // Function to close the modal
+        const closeModal = () => {
+            modal.classList.remove('is-active');
+        };
+
+        // Event listeners for closing the modal
+        closeModalBtn.addEventListener('click', closeModal);
+        closeXBtn.addEventListener('click', closeModal);
+    });
+
+
+    // AbbyBot Shake image animation
+
+    const image = document.getElementById('shakeImage');
+
+    image.addEventListener('click', function() {
+    
+    if (image.classList.contains('disabled')) return;
+
+    
+    image.classList.add('disabled');
+
+    
+    image.classList.remove('swing');
+
+    
+    void image.offsetWidth;
+
+    
+    image.classList.add('swing');
+
+    
+    image.addEventListener('animationend', function() {
+        
+        image.classList.remove('disabled');
+    }, { once: true });
+    });
+
+
+
+</script>
 
 
 {% block javascript %}
-<script src="{{ url_for('static', filename='js/home_script.js') }}"></script>
+
 {% endblock %}
 
 

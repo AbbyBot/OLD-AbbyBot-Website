@@ -5,7 +5,7 @@ import os
 from contextlib import contextmanager
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import HTTPException
 
@@ -325,7 +325,7 @@ def login():
         if admin:
             if admin.check_password(password):
                 login_user(admin)
-                flash('Logged in successfully.', 'Success')
+                flash(f'Logged in as {username}.', 'Success')
                 return redirect(url_for('admin_dashboard'))
             else:
                 flash('Incorrect password.', 'Error')
@@ -348,7 +348,8 @@ def logout():
 @app.route('/admin-dashboard')
 @login_required
 def admin_dashboard():
-    return render_template('admin_dashboard.html')
+    username = current_user.username
+    return render_template('admin_dashboard.html', username=username)
 
 # manage all messages
 

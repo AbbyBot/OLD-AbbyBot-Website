@@ -34,6 +34,7 @@
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
         </div>
 
@@ -51,8 +52,8 @@
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item" href="/wip">
-                    <i class="fa-solid fa-user-cog"></i> Profile Settings
+                <a class="navbar-item" href="/">
+                    <i class="fa-solid fa-repeat"></i> Switch to Default Website
                 </a>
                 <a class="navbar-item" href="/logout">
                     <i class="fa-solid fa-sign-out-alt"></i> Logout
@@ -132,6 +133,8 @@
 
     {% endif %}
     {% endwith %}
+
+    <script src="{{ url_for('static', filename='js/base_script.js') }}"></script>
 
 </body>
 
